@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+<title>Vehicle Monitor</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand">Vehicle Monitor</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="#">Home</a></li>
+				<li><a href="new">Add Vehicle</a></li>
+			</ul>
+		</div>
+	</nav>
+	<div class="container">
+		<h2>Vehicle's List</h2>
+		<input class="form-control" id="myInput" type="text" placeholder="Search..">
+  		<br>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>Owner</th>
+					<th>Address</th>
+					<th>VIN</th>
+					<th>Registration Number</th>
+					<th>Status</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody id="myTable">
+				<tr th:each="vehicle : ${pageModel.listVehicles}">
+					<td th:text="${vehicle.owner}"></td>
+					<td th:text="${vehicle.address}"></td>
+					<td th:text="${vehicle.vin}"></td>
+					<td th:text="${vehicle.registration}"></td>
+					<td th:text="${vehicle.status}"></td>
+					<td><a
+						th:href="@{'/delete/' + ${vehicle.id}}"> <span
+							class="glyphicon glyphicon-trash"></span>
+					</a></td>
+				</tr>
+			</tbody>
+		</table>
+		&nbsp;&nbsp;&nbsp;&nbsp;<a th:href="@{'/connect/'}" class="btn btn-info btn-lg"> 
+			<span class="glyphicon glyphicon-refresh"></span>Refresh
+		</a>
+	</div>
+
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+
+</body>
+</html>

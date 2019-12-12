@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+  <title>Add Vehicle</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Vehicle Monitor</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="/">Home</a></li>
+      <li class="active"><a href="new">New Vehicle</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="container">
+  <h2>Add a new vehicle</h2>
+  <form class="form-horizontal" name="myForm" onsubmit="return validateForm()" th:action="@{/save}" th:object="${vehicle}" method="post">
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="owner">Owner:</label>
+      <div class="col-sm-10">
+        <input type="owner" class="form-control" id="owner" placeholder="Name of vehicle's owner" name="owner" th:field="*{owner}">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="address">Address:</label>
+      <div class="col-sm-10">          
+        <input type="address" class="form-control" id="address" placeholder="Type address" name="address" required th:field="*{address}">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="vin">VIN:</label>
+      <div class="col-sm-10">          
+        <input type="vin" class="form-control" id="vin" placeholder="Type VIN" name="vin" required th:field="*{vin}">
+      </div>
+       <div class="form-group">
+      <label class="control-label col-sm-2" for="registration">Registration No:</label>
+      <div class="col-sm-10">          
+        <input type="registration" class="form-control" id="registration" placeholder="Type Reg. No" name="registration" required th:field="*{registration}">
+      </div>
+    </div>
+           <div class="form-group">
+      <label class="control-label col-sm-2" for="status">Status:</label>
+      <div class="col-sm-10">          
+        <input type="status" class="form-control" id="status" placeholder="Type current status" name="status" required th:field="*{status}">
+      </div>
+    </div>
+    <div class="form-group">
+				<!-- <input type="hidden" class="form-control" id="publishDate" name="publishDate" th:field="*{publishDate}"> -->
+			</div>
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default" >Add</button>
+        
+        <p id="p01"></p>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+</body>
+</html>
