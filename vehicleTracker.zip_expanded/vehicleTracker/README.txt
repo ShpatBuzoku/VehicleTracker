@@ -1,6 +1,7 @@
 
 ###Database:
 	Find the database schema inside "dbSchema" folder
+	PATH: vehicleTracker.zip_expanded\vehicleTracker\dbSchema\vehicletracker.sql
 
 ###Technology used:
 	Eclipse  Java IDE
